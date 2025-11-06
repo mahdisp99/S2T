@@ -75,6 +75,7 @@ SpeechToTextApp
 *.bak
 *.swp
 *.swo
+.env.backup
 
 # Application data (should not be in repo)
 ~/Library/Application Support/SpeechToText/
