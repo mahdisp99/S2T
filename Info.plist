@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleExecutable</key>
+    <string>SpeechToTextApp</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.jozi.speechtotext</string>
+    <key>CFBundleName</key>
+    <string>Speech to Text</string>
+    <key>CFBundleDisplayName</key>
+    <string>Speech to Text</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>برای تبدیل صدا به متن نیاز به میکروفون است</string>
+    <key>NSAccessibilityUsageDescription</key>
+    <string>برای استفاده از Global Hotkey (مثل Mic Key یا Option+Shift+Space) نیاز به دسترسی Accessibility است</string>
+    <key>NSAppleEventsUsageDescription</key>
+    <string>برای paste کردن متن نیاز به دسترسی Automation است</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+</dict>
+</plist>
