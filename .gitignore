@@ -91,3 +91,11 @@ SpeechToTextApp
 # Temporary files
 *.tmp
 .cache/
+
+# Python (Windows client)
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+windows/.venv/
+.env

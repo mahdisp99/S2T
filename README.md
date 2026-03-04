@@ -2,6 +2,8 @@
 
 Real-time speech-to-text application for macOS using Swift and Soniox API
 
+> Windows preview implementation lives in [`windows/`](windows/README.md).
+
 ---
 
 ## ✨ Features
