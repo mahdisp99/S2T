@@ -48,9 +48,9 @@ py -m venv .venv
 .\.venv\Scripts\python.exe .\windows\gui.py
 ```
 
-## Build Installer EXE
+## Build App EXE
 
-Build a single-file app executable:
+Build the single-file app executable:
 
 ```powershell
 cd Speech-to-Text
@@ -60,6 +60,22 @@ cd Speech-to-Text
 Output:
 
 `.\dist\SpeechToTextWindows.exe`
+
+## Build Setup Installer (.exe)
+
+This creates a Windows installer wizard (`Setup.exe`) using Inno Setup.
+
+1. Install Inno Setup 6 (once).
+2. Build installer:
+
+```powershell
+cd Speech-to-Text
+.\windows\build_windows_installer.ps1 -Clean -Version "0.3.0"
+```
+
+Output:
+
+`.\dist\installer\SpeechToTextWindows-Setup-0.3.0.exe`
 
 ## Runtime Controls
 
