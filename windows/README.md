@@ -1,16 +1,14 @@
-# Speech to Text (Windows Preview)
+# Speech to Text (Windows)
 
-This folder contains the first Windows-focused implementation of the project.
+Windows implementation now includes a tray UI and a build pipeline for a standalone `.exe`.
 
 Current scope:
 - Real-time microphone capture on Windows
-- Streaming to Soniox via WebSocket
-- Persian transcript + English translation handling
-- Global hotkey to start/stop recording
-- Auto-copy + auto-paste for final text
-- SQLite session and chunk storage
-
-This is an MVP for Windows and does not yet have feature parity with the macOS UI.
+- Soniox WebSocket streaming (Persian + English translation)
+- Tray app with settings window
+- Global hotkey toggle for recording
+- Auto-copy and auto-paste for final text
+- SQLite storage for sessions/chunks
 
 ## Requirements
 
@@ -18,17 +16,25 @@ This is an MVP for Windows and does not yet have feature parity with the macOS U
 - Python 3.10+
 - Soniox API key
 
-## Quick Start (PowerShell)
+## Quick Start (Tray UI)
 
 ```powershell
 cd Speech-to-Text
 .\windows\run_windows.ps1 -ApiKey "YOUR_SONIOX_API_KEY"
 ```
 
-If you already saved the API key once:
+If API key is already saved:
 
 ```powershell
 .\windows\run_windows.ps1
+```
+
+This launches the tray app. Open `Settings` from tray to update API key, hotkey, and paste language.
+
+## CLI Mode (Optional)
+
+```powershell
+.\windows\run_windows.ps1 -Cli
 ```
 
 ## Manual Setup
@@ -39,23 +45,40 @@ py -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
 .\.venv\Scripts\python.exe -m pip install -r .\windows\requirements.txt
 .\.venv\Scripts\python.exe .\windows\cli.py --set-api-key "YOUR_SONIOX_API_KEY" --configure-only
-.\.venv\Scripts\python.exe .\windows\cli.py
+.\.venv\Scripts\python.exe .\windows\gui.py
 ```
+
+## Build Installer EXE
+
+Build a single-file app executable:
+
+```powershell
+cd Speech-to-Text
+.\windows\build_windows_exe.ps1 -Clean
+```
+
+Output:
+
+`.\dist\SpeechToTextWindows.exe`
 
 ## Runtime Controls
 
 - Default hotkey: `Ctrl+Shift+Space`
 - First press: start recording
 - Second press: stop recording and save session
-- Exit app: `Ctrl+C` in terminal
+- Tray menu:
+  - Start/Stop Recording
+  - Settings
+  - Open Data Folder
+  - Quit
 
 ## Configuration
 
-Config is saved at:
+Config file:
 
 `%APPDATA%\SpeechToTextWindows\config.json`
 
-Commands:
+CLI config commands:
 
 ```powershell
 .\.venv\Scripts\python.exe .\windows\cli.py --show-config
@@ -69,9 +92,8 @@ SQLite database:
 
 `%APPDATA%\SpeechToTextWindows\transcriptions.db`
 
-## Known Gaps (Planned)
+## Known Gaps
 
-- No desktop UI yet (currently terminal-driven)
-- No waveform/floating window yet
-- No history/dashboard UI yet
-- Hotkey behavior depends on user privileges and foreground app rules on Windows
+- No dashboard/history desktop window yet
+- No waveform/floating text window yet
+- Hotkey behavior depends on Windows privilege level and focused application

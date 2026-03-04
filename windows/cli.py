@@ -34,6 +34,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Only save config and exit without running the app",
     )
+    parser.add_argument(
+        "--gui",
+        action="store_true",
+        help="Run tray GUI instead of terminal mode",
+    )
     return parser.parse_args()
 
 
@@ -64,6 +69,12 @@ def main() -> int:
 
     if args.configure_only:
         return 0
+
+    if args.gui:
+        from stt_windows.gui_app import SpeechToTextTrayApp
+
+        app = SpeechToTextTrayApp()
+        return app.run()
 
     from stt_windows.app import SpeechToTextWindowsApp
 

@@ -99,3 +99,5 @@ __pycache__/
 .venv/
 windows/.venv/
 .env
+dist/
+*.spec

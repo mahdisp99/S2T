@@ -1,5 +1,6 @@
 param(
-    [string]$ApiKey = ""
+    [string]$ApiKey = "",
+    [switch]$Cli
 )
 
 $ErrorActionPreference = "Stop"
@@ -19,5 +20,9 @@ if ($ApiKey -ne "") {
     & $venvPython .\windows\cli.py --set-api-key $ApiKey --configure-only
 }
 
-& $venvPython .\windows\cli.py
-
+if ($Cli) {
+    & $venvPython .\windows\cli.py
+}
+else {
+    & $venvPython .\windows\gui.py
+}
